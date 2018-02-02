@@ -1,0 +1,15 @@
+%h1 Recipe Box
+%table.table
+  %thead
+    %tr
+      %th Recipes
+      %th{:colspan => "3"}
+  %tbody
+    - @todo_lists.each do |todo_list|
+      %tr
+        %td= todo_list.name
+        %td= link_to 'Show', todo_list
+        %td= link_to 'Edit', edit_todo_list_path(todo_list)
+        %td= link_to 'Destroy', todo_list, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'Add new todo list', new_todo_list_path

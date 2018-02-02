@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170312015236) do
+ActiveRecord::Schema.define(version: 20180202105955) do
+
+  create_table "directions", force: :cascade do |t|
+    t.text     "step"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "todo_list_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "todo_list_id"
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string   "description"
@@ -23,15 +37,6 @@ ActiveRecord::Schema.define(version: 20170312015236) do
 
   create_table "todo_lists", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "birthday"
-    t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
